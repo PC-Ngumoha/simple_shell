@@ -7,7 +7,6 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 
-
 /**
  * main - main entry point of the program
  * @ac: count of command line arguments
@@ -24,9 +23,13 @@ int main(int ac, char **av)
 	ssize_t num_chars;
 	pid_t child_id;
 	char *args[10];
+	int i;
 
 	if (ac > 1)
-		return (1);
+	{
+		for (i = 0; i < ac; i++)
+			printf("%s\n", av[i]);
+	}
 	while (1)
 	{
 		printf("#cisfun$ ");
