@@ -34,7 +34,10 @@ int main(void)
 		printf("#cisfun$ ");
 		num_chars = getline(&command, &n, stdin);
 		if (num_chars == -1)
+		{
+			free(command);
 			exit(2);
+		}
 		command[num_chars - 1] = '\0';
 		args[0] = command;
 		args[1] = NULL;
@@ -45,10 +48,12 @@ int main(void)
 		{
 			if (execve(args[0], args, NULL) == -1)
 				dprintf(STDERR_FILENO, "Error: %s\n", strerror(errno));
+			free(command);
 			_exit(3);
 		}
 		if (child_id > 0)
 			wait(NULL);
 	}
+	free(command);
 	return (0);
 }
