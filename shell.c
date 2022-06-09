@@ -25,11 +25,9 @@ int main(int ac, char **av)
 	char *args[10];
 	int i;
 
-	if (ac > 1)
-	{
-		for (i = 0; i < ac; i++)
-			printf("%s\n", av[i]);
-	}
+	if (ac != 1)
+		return (1);
+
 	while (1)
 	{
 		printf("#cisfun$ ");
