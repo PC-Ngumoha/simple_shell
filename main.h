@@ -12,6 +12,7 @@
 
 
 /* helper functions */
-
+int _strlen(char *s);
+char *_strdup(char *str);
 
 #endif /* MAIN_H_ */
