@@ -23,7 +23,6 @@ int main(int ac, char **av)
 	ssize_t num_chars;
 	pid_t child_id;
 	char *args[10];
-	int i;
 
 	if (ac != 1)
 		return (1);
