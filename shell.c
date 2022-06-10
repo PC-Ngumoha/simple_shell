@@ -41,11 +41,6 @@ int main(int ac, char **av)
 			args[size - 1] = strdup(word);
 			size++;
 			args = (char **)realloc(args, sizeof(char *) * size);
-			if (args == NULL)
-			{
-				free_args(args, size);
-				_exit(1);
-			}
 			word = strtok(NULL, " ");
 		}
 		args[size - 1] = NULL;
