@@ -7,7 +7,7 @@
  * Return: length of string
  */
 
-int _strlen(char *s)
+int _strlen(const char *s)
 {
 	int len = 0;
 
@@ -27,20 +27,23 @@ int _strlen(char *s)
  *
  * Return: duplicate of string
  */
-
-char *_strdup(char *str)
+char *_strdup(const char *str)
 {
 	char *string;
+	int length, i = 0;
 
-	string = malloc(_strlen(str) * sizeof(char *));
-
+	if (str == NULL)
+		return (NULL);
+	length = _strlen(str);
+	string = malloc(sizeof(char) * (length + 1));
 	if (string == NULL)
 		return (NULL);
-
-	if (string != NULL)
+	while (str[i] != '\0')
 	{
-		strcpy(string, str);
+		string[i] = str[i];
+		i++;
 	}
+	string[i] = '\0';
 
 	return (string);
 }
