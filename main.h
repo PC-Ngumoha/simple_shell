@@ -12,7 +12,6 @@
 
 
 /* helper functions */
-int _strlen(const char *s);
-char *_strdup(const char *str);
+void free_args(char **args, size_t size);
 
 #endif /* MAIN_H_ */
