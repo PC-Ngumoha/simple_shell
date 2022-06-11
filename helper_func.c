@@ -15,6 +15,39 @@ void free_args(char **args, size_t size)
 	if (args == NULL)
 		return;
 	for (i = 0; i < size; i++)
+	{
 		free(args[i]);
+	}
 	free(args);
 }
+
+
+/**
+ * get_command - derives the command from a pathname
+ * @str: pathname we wish to parse
+ *
+ * Return: pointer to the command string
+ */
+char *get_command(char *str)
+{
+	size_t size = 1;
+	char *string, *command, *token, **args = NULL;
+
+	if (str == NULL)
+		return (NULL);
+	string = strdup(str);
+	args = malloc(sizeof(char *) * size);
+	token = strtok(string, "/");
+	while (token != NULL)
+	{
+		args[size - 1] = strdup(token);
+		args = realloc(args, sizeof(char *) * (++size));
+		token = strtok(NULL, "/");
+	}
+	args[size - 1] = NULL;
+	command = strdup(args[size - 2]);
+	free_args(args, size);
+	free(string);
+	return (command);
+}
+

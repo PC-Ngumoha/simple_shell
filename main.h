@@ -27,6 +27,7 @@ typedef struct option_type
 
 /* helper functions */
 void free_args(char **args, size_t size);
+char *get_command(char *str);
 
 /* Function pointer generators */
 void (*get_func(char *s))(char **, char **);

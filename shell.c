@@ -11,7 +11,7 @@
  */
 int main(int ac, char **av)
 {
-	char *word, *command, *token, *line = NULL, **args = NULL;
+	char *word, *command, *line = NULL, **args = NULL;
 	size_t size = 1, n = 0;
 	ssize_t num_char;
 	void (*func)(char **, char **);
@@ -31,21 +31,16 @@ int main(int ac, char **av)
 		if (args == NULL)
 		{
 			dprintf(STDERR_FILENO, "Not enough memory\n");
-			free(line);
 			exit(1);
 		}
+		word = strtok(line, " ");
 		while (word != NULL)
 		{
 			args[size - 1] = strdup(word);
 			args = realloc(args, sizeof(char *) * (++size));
 			word = strtok(NULL, " ");
-		} args[size - 1] = NULL, command = strdup(args[0]);
-		token = strtok(command, "/");
-		while (token != NULL)
-		{
-			command = strdup(token);
-			token = strtok(NULL, "/");
-		} args[0] = strdup(command), func = get_func(args[0]);
+		} args[size - 1] = NULL, command = get_command(args[0]);
+		args[0] = command, func = get_func(args[0]);
 		if (!func)
 			dprintf(STDERR_FILENO, "%s: %s\n", av[0], strerror(errno));
 		else
