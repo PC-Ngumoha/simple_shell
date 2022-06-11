@@ -20,13 +20,15 @@ int main(int ac, char **av)
 		return (1);
 	while (1)
 	{
-		printf("#cisfun$ ");
-		num_char = getline(&line, &n, stdin);
-		if (num_char == -1)
-		{
-			free(line);
-			exit(1);
-		} line[num_char - 1] = '\0';
+		do {
+			printf("#cisfun$ ");
+			num_char = getline(&line, &n, stdin);
+			if (num_char == -1)
+			{
+				free(line);
+				exit(1);
+			} line[num_char - 1] = '\0';
+		} while (strcmp(line, "\0") == 0);
 		args = malloc(sizeof(char *) * size);
 		if (args == NULL)
 		{
@@ -38,8 +40,7 @@ int main(int ac, char **av)
 		while (word != NULL)
 		{
 			args[size - 1] = strdup(word);
-			size++;
-			args = realloc(args, sizeof(char *) * size);
+			args = realloc(args, sizeof(char *) * (++size));
 			word = strtok(NULL, " ");
 		}
 		args[size - 1] = NULL;
