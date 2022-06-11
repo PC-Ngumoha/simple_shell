@@ -31,6 +31,7 @@ int main(int ac, char **av)
 		if (args == NULL)
 		{
 			dprintf(STDERR_FILENO, "Not enough memory\n");
+			free(line);
 			exit(1);
 		}
 		word = strtok(line, " ");
@@ -45,8 +46,10 @@ int main(int ac, char **av)
 			dprintf(STDERR_FILENO, "%s: %s\n", av[0], strerror(errno));
 		else
 			func(args, NULL);
-		free_args(args, size), size = 1, args = NULL;
+		free_args(args, size);
+		free(line);
+		size = 1, args = NULL, line = NULL;
 
-	} free(line);
+	}
 	return (0);
 }
