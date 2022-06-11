@@ -38,17 +38,23 @@ int main(int ac, char **av)
 		while (word != NULL)
 		{
 			args[size - 1] = strdup(word);
-			args = realloc(args, sizeof(char *) * (++size));
+			size++;
+			args = realloc(args, sizeof(char *) * size);
 			word = strtok(NULL, " ");
-		} args[size - 1] = NULL, command = get_command(args[0]);
-		args[0] = command, func = get_func(args[0]);
+		}
+		args[size - 1] = NULL;
+		command = get_command(args[0]);
+		word = args[0];
+		args[0] = command;
+		free(word);
+		func = get_func(args[0]);
 		if (!func)
-			dprintf(STDERR_FILENO, "%s: %s\n", av[0], strerror(errno));
+			dprintf(STDERR_FILENO, "%s: No such file or directory\n", av[0]);
 		else
 			func(args, NULL);
 		free_args(args, size);
-		free(line);
-		size = 1, args = NULL, line = NULL;
+		size = 1;
+		args = NULL;
 
 	}
 	return (0);

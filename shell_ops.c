@@ -10,8 +10,8 @@
  */
 void _list(char **av, char **env)
 {
-	(void) av;
 	(void) env;
+	(void) av;
 
 	printf("Operation was successful\n");
 }
