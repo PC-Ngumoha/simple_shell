@@ -24,7 +24,6 @@ int main(int ac, char **av)
 		num_chars = getline(&line, &n, stdin);
 		if (num_chars == -1)
 		{
-			free_args(args, size);
 			free(line);
 			exit(2);
 		}
@@ -65,7 +64,5 @@ int main(int ac, char **av)
 			args = NULL;
 		}
 	}
-	free(line);
-	free_args(args, size);
 	return (0);
 }
