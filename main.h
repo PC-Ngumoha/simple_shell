@@ -35,5 +35,6 @@ void (*get_func(char *s))(char **, char **);
 
 /* Shell Operations */
 void _list(char **av, char **env);
+char *_strcat(char const *str1, char const *str2);
 
 #endif /* MAIN_H_ */
