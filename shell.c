@@ -22,7 +22,7 @@ int main(int ac, char **av)
 	{
 		do {
 			printf("#cisfun$ ");
-			num_char = getline(&line, &n, stdin);
+			num_char = my_getline(&line, &n, STDIN_FILENO);
 			if (num_char == -1)
 			{
 				free(line);
