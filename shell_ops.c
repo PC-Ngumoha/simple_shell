@@ -25,6 +25,7 @@ void _list(char **av, char **env)
 	av[0] = strdup(string);
 	free(word);
 	free(string);
+	free(command);
 
 	child_id = fork();
 	if (child_id == -1)
