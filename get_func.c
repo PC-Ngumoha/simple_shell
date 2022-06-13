@@ -8,7 +8,10 @@
  */
 void (*get_func(char *s))(char **, char **)
 {
-	options ops[] = {{"ls", _list}, {NULL, NULL}};
+	options ops[] = {
+		{"ls", _list},
+		{"exit", my_exit},
+		{NULL, NULL}};
 	int i;
 
 	for (i = 0; ops[i].command != NULL; i++)

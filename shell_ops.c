@@ -31,14 +31,22 @@ void _list(char **av, char **env)
 	if (child_id == -1)
 		dprintf(STDERR_FILENO, "%s: %s\n", av[0], strerror(errno));
 	if (child_id == 0)
-		{
-			if (execve(av[0], av, NULL) == -1)
-				dprintf(STDERR_FILENO, "%s: %s\n", av[0], strerror(errno));
-			free_args(av);
-			_exit(1);
-		}
+	{
+		if (execve(av[0], av, NULL) == -1)
+			dprintf(STDERR_FILENO, "%s: %s\n", av[0], strerror(errno));
+		free_args(av);
+		_exit(1);
+	}
 	if (child_id > 0)
 		wait(NULL);
 
 	(void) env;
+}
+
+void my_exit(char **av, char **env)
+{
+	(void) av;
+	(void) env;
+
+	_exit(4);
 }

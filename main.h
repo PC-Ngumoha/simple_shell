@@ -35,5 +35,6 @@ void (*get_func(char *s))(char **, char **);
 
 /* Shell Operations */
 void _list(char **av, char **env);
+void my_exit(char **av, char **env);
 
 #endif /* MAIN_H_ */
