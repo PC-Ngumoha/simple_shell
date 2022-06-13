@@ -3,18 +3,17 @@
 
 /**
  * free_args - frees up the memory allocated to an array of strings
- * @args: dynamically allocated array of strings
- * @size: size of the dynamically allocated array
+ * @args: dynamically allocated array of stringsy
  *
  * Return: void
  */
-void free_args(char **args, size_t size)
+void free_args(char **args)
 {
 	size_t i;
 
 	if (args == NULL)
 		return;
-	for (i = 0; i < size; i++)
+	for (i = 0; args[i] != NULL; i++)
 	{
 		free(args[i]);
 	}
@@ -46,7 +45,7 @@ char *get_command(char *str)
 	}
 	args[size - 1] = NULL;
 	command = strdup(args[size - 2]);
-	free_args(args, size);
+	free_args(args);
 	free(string);
 	return (command);
 }

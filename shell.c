@@ -53,7 +53,7 @@ int main(int ac, char **av)
 			dprintf(STDERR_FILENO, "%s: No such file or directory\n", av[0]);
 		else
 			func(args, NULL);
-		free_args(args, size);
+		free_args(args);
 		size = 1;
 		args = NULL;
 

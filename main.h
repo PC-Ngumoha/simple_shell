@@ -26,7 +26,7 @@ typedef struct option_type
 } options;
 
 /* helper functions */
-void free_args(char **args, size_t size);
+void free_args(char **args);
 char *get_command(char *str);
 ssize_t my_getline(char **line, size_t *len, int fd);
 
@@ -35,6 +35,5 @@ void (*get_func(char *s))(char **, char **);
 
 /* Shell Operations */
 void _list(char **av, char **env);
-char *_strcat(char const *str1, char const *str2);
 
 #endif /* MAIN_H_ */
