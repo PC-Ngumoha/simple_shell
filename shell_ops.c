@@ -52,10 +52,21 @@ void _list(char **av, char **env)
  */
 void my_exit(char **av, char **env)
 {
+	int status;
+
 	(void) env;
 
-	free_args(av);
-	_exit(4);
+	if (av[1] == NULL)
+	{
+		free_args(av);
+		_exit(0);
+	}
+	else
+	{
+		status = atoi(av[1]);
+		free_args(av);
+		_exit(status);
+	}
 }
 
 /**
@@ -67,11 +78,9 @@ void my_exit(char **av, char **env)
  */
 void my_env(char **av, char **env)
 {
-	unsigned int i;
+	unsigned int i = 0;
 
-	for (i = 0; env[i]; i++)
-	{
-		printf("%s\n", env[i]);
-	}
+	while (env[i])
+		i++;
 	(void) av;
 }
