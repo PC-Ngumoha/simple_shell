@@ -43,10 +43,35 @@ void _list(char **av, char **env)
 	(void) env;
 }
 
+/**
+ * my_exit - function to implement exit 
+ * @av: vector argument
+ * @env: environment variable
+ *
+ * Return: void
+ */
 void my_exit(char **av, char **env)
 {
-	(void) av;
 	(void) env;
 
+	free_args(av);
 	_exit(4);
+}
+
+/**
+ * my_env - function to get environment
+ * @av: vector argument
+ * @env: environment variable
+ *
+ * Return: void
+ */
+void my_env(char **av, char **env)
+{
+	unsigned int i;
+
+	for (i = 0; env[i]; i++)
+	{
+		printf("%s\n", env[i]);
+	}
+	(void) av;
 }

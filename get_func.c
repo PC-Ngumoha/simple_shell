@@ -11,6 +11,7 @@ void (*get_func(char *s))(char **, char **)
 	options ops[] = {
 		{"ls", _list},
 		{"exit", my_exit},
+		{"env", my_env},
 		{NULL, NULL}};
 	int i;
 
