@@ -43,10 +43,14 @@ void _list(char **av, char **env)
 	(void) env;
 }
 
+/**
+ * my_exit - exits the current running process of the shell
+ * @av: input arguments' vector
+ * @env: vector to hold the environment variables
+ *
+ * Return: void
+ */
 void my_exit(char **av, char **env)
 {
-	(void) av;
 	(void) env;
-
-	_exit(4);
 }
