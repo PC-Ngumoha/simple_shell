@@ -11,7 +11,7 @@
  */
 int main(int ac, char **av)
 {
-	char *word, *command, *line = NULL, **args = NULL;
+	char *word, *command, *line = NULL, **args = NULL, **env = environ;
 	size_t size = 1, n = 0;
 	ssize_t num_char;
 	void (*func)(char **, char **);
@@ -52,7 +52,7 @@ int main(int ac, char **av)
 		if (!func)
 			dprintf(STDERR_FILENO, "%s: No such file or directory\n", av[0]);
 		else
-			func(args, NULL);
+			func(args, env);
 		free_args(args);
 		size = 1;
 		args = NULL;

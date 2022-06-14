@@ -1,5 +1,6 @@
 #include "main.h"
 
+
 /**
  * _list - lists out the content of the current directory
  * @av: vector of arguments for the operation/command
@@ -10,10 +11,10 @@
 void _list(char **av, char **env)
 {
 	char *word, *command, *string;
-
 	size_t length1, length2, total_length;
 	pid_t child_id;
 
+	(void) env;
 	command = strdup(av[0]);
 	length1 = strlen("/bin/");
 	length2 = strlen(command);
@@ -39,8 +40,6 @@ void _list(char **av, char **env)
 	}
 	if (child_id > 0)
 		wait(NULL);
-
-	(void) env;
 }
 
 /**
@@ -76,11 +75,25 @@ void my_exit(char **av, char **env)
  *
  * Return: void
  */
-void my_env(char **av, char **env)
+void print_env(char **av, char **env)
 {
-	unsigned int i = 0;
+	pid_t child_id;
+	size_t i;
 
-	while (env[i])
-		i++;
 	(void) av;
+	child_id = fork();
+	if (child_id == -1)
+		dprintf(STDERR_FILENO, "Child process could not be created\n");
+	if (child_id == 0)
+	{
+		i = 0;
+		while (env[i] != NULL)
+		{
+			printf("%s\n", env[i]);
+			i++;
+		}
+		_exit(1);
+	}
+	if (child_id > 0)
+		wait(NULL);
 }
