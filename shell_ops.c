@@ -45,7 +45,7 @@ void _list(char **av, char **env)
 }
 
 /**
- * my_exit - function to implement exit 
+ * my_exit - function to implement exit
  * @av: vector argument
  * @env: environment variable
  *
@@ -71,7 +71,7 @@ void my_exit(char **av, char **env)
 }
 
 /**
- * my_env - function to get environment
+ * print_env - function to get environment
  * @av: vector argument
  * @env: environment variable
  *
