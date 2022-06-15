@@ -39,7 +39,9 @@ void _list(char **av, char **env)
 		_exit(1);
 	}
 	if (child_id > 0)
+	{
 		wait(NULL);
+	}
 }
 
 /**
@@ -58,13 +60,13 @@ void my_exit(char **av, char **env)
 	if (av[1] == NULL)
 	{
 		free_args(av);
-		_exit(0);
+		exit(0);
 	}
 	else
 	{
 		status = atoi(av[1]);
 		free_args(av);
-		_exit(status);
+		exit(status);
 	}
 }
 
@@ -78,22 +80,22 @@ void my_exit(char **av, char **env)
 void print_env(char **av, char **env)
 {
 	pid_t child_id;
-	size_t i;
 
-	(void) av;
 	child_id = fork();
 	if (child_id == -1)
 		dprintf(STDERR_FILENO, "Child process could not be created\n");
 	if (child_id == 0)
 	{
-		i = 0;
-		while (env[i] != NULL)
+		while (*env != NULL)
 		{
-			printf("%s\n", env[i]);
-			i++;
+			printf("%s\n", *env);
+			env++;
 		}
+		free_args(av);
 		_exit(1);
 	}
 	if (child_id > 0)
+	{
 		wait(NULL);
+	}
 }
