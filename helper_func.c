@@ -99,6 +99,7 @@ ssize_t my_getline(char **line, size_t *len, int fd)
 			return ((ssize_t) strlen(*line));
 		}
 	}
+	free(*line);
 	return (-1);
 }
 
