@@ -6,9 +6,9 @@
  *
  * Return: length of string
  */
-int _strlen(char *str)
+size_t _strlen(const char *str)
 {
-	unsigned int len;
+	size_t len = 0;
 
 	while (str[len] != '\0')
 	{
@@ -17,6 +17,3 @@ int _strlen(char *str)
 
 	return (len);
 }
-
-char *_strcat(char *str)
-{
