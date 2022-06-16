@@ -34,7 +34,7 @@ char *_strcat(char *str1, char *str2)
 
 	while (str2[j] != '\0')
 	{
-		str1[j] = str2[i];
+		str1[i] = str2[j];
 		j++;
 		i++;
 	}
@@ -64,3 +64,5 @@ size_t _strcmp(char *str1, char *str2)
 
 	return (0);
 }
+
+
