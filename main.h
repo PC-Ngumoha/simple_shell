@@ -41,4 +41,8 @@ void _list(char **av, char **env);
 void my_exit(char **av, char **env);
 void print_env(char **av, char **env);
 
+/* String functions */
+int _strlen(char *str);
+char _strcat(char *str);
+
 #endif /* MAIN_H_ */
