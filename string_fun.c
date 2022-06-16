@@ -25,7 +25,7 @@ size_t _strlen(const char *str)
  * 
  * Return: the concatenated string
  */
-char *_strcat(char *str1, char *str2)
+char *_strcat(char *str1, const char *str2)
 {
 	size_t i = 0, j = 0;
 
@@ -49,7 +49,7 @@ char *_strcat(char *str1, char *str2)
  *
  * Return: difference between both string
  */
-size_t _strcmp(char *str1, char *str2)
+size_t _strcmp(char *str1, const char *str2)
 {
 	size_t i = 0;
 
@@ -65,4 +65,31 @@ size_t _strcmp(char *str1, char *str2)
 	return (0);
 }
 
+/**
+ * _atoi - function to convert string to integer
+ * @str: string to be converted
+ *
+ * Return: integer gotten
+ */
+size_t _atoi(const char *str)
+{
+	size_t num = 0, i = 0;
+	int sign = 1;
 
+	while (str[i] != '\0')
+	{
+		if (str[i] >= '0' && str[i] <= '9')
+		{
+			num = (num * 10) + (str[i] - '0');
+
+			if (str[i + 1] == ' ')
+				break;
+		}
+
+		else if (str[i] == '-')
+			sign *= -1;
+		i++;
+	}
+
+	return (num * sign);
+}
