@@ -22,3 +22,25 @@ char *_strdup(const char *str)
 	new_str[i] = '\0';
 	return (new_str);
 }
+
+
+/**
+ * _strcpy - copies the contents of one string to another string
+ * @dest: destination string
+ * @src: source string
+ *
+ * Return: destination string
+ */
+char *_strcpy(char *dest, const char *src)
+{
+	size_t i = 0;
+	if (dest == NULL || src == NULL)
+		return (NULL);
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	return (dest);
+}
+
