@@ -28,12 +28,12 @@ typedef struct option_type
 /*Global Environment Variable*/
 extern char **environ;
 
-/* helper functions */
+/* helper functions*/
 void free_args(char **args);
 char *get_command(char *str);
 ssize_t my_getline(char **line, size_t *len, int fd);
 
-/* Function pointer generators */
+/* Function pointer generator*/s 
 void (*get_func(char *s))(char **, char **);
 
 /* Shell Operations */
@@ -44,5 +44,7 @@ void print_env(char **av, char **env);
 /* String functions */
 int _strlen(char *str);
 char *_strcat(char *str1, char *str2);
+size_t _strlen(const char *str);
+char *_strdup(const char *str);
 
 #endif /* MAIN_H_ */
