@@ -43,6 +43,6 @@ void print_env(char **av, char **env);
 
 /* String functions */
 int _strlen(char *str);
-char _strcat(char *str);
+char *_strcat(char *str1, char *str2);
 
 #endif /* MAIN_H_ */
