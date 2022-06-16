@@ -42,13 +42,13 @@ void my_exit(char **av, char **env);
 void print_env(char **av, char **env);
 
 /* String functions */
-size_t _strlen(char *str);
-char *_strcat(char *str1, const char *str2);
 size_t _strlen(const char *str);
+char *_strcat(char *str1, const char *str2);
 char *_strdup(const char *str);
 size_t _strcmp(char *str1, const char *str2);
 size_t _atoi(const char *str);
 size_t _strcmp(char *str1, char *str2);
 char *_strcpy(char *dest, const char *src);
+ssize_t _puts(const char *str);
 
 #endif /* MAIN_H_ */

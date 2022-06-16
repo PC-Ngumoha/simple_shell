@@ -93,3 +93,16 @@ size_t _atoi(const char *str)
 
 	return (num * sign);
 }
+
+/**
+ * _puts - function to print strings to std input
+ * @str: character to print out
+ *
+ * Return: character printed out
+ */
+ssize_t _puts(const char *str)
+{
+	size_t len = _strlen(str);
+
+	return (write(1, str, len));
+}
