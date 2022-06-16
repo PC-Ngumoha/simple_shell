@@ -48,5 +48,7 @@ size_t _strlen(const char *str);
 char *_strdup(const char *str);
 size_t _strcmp(char *str1, const char *str2);
 size_t _atoi(const char *str);
+size_t _strcmp(char *str1, char *str2);
+char *_strcpy(char *dest, const char *src);
 
 #endif /* MAIN_H_ */
