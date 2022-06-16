@@ -41,3 +41,26 @@ char *_strcat(char *str1, char *str2)
 
 	return (str1);
 }
+
+/**
+ * _strcmp - function to compare strings
+ * @str1: first string
+ * @str2: second string
+ *
+ * Return: difference between both string
+ */
+size_t _strcmp(char *str1, char *str2)
+{
+	size_t i = 0;
+
+	while (str1[i] != '\0' && str2[i] != '\0')
+	{
+		if (str1[i] != str2[i])
+		{
+			return (str1[i] -str2[i]);
+		}
+		i++;
+	}
+
+	return (0);
+}
