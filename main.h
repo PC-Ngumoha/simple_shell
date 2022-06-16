@@ -51,4 +51,7 @@ size_t _strcmp(char *str1, char *str2);
 char *_strcpy(char *dest, const char *src);
 ssize_t _puts(const char *str);
 
+/* memory functions */
+void *_realloc(void *old_alloc, size_t old_size, size_t new_size);
+
 #endif /* MAIN_H_ */
