@@ -49,7 +49,6 @@ int main(int ac, char **av)
 		else
 			func(args, env);
 		free_args(args), size = 1, args = NULL;
-
 	}
 	return (0);
 }
