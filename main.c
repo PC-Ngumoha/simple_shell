@@ -16,7 +16,6 @@ int main(int ac, char **av)
 	ssize_t num_char;
 	void (*func)(char **, char **);
 
-	(void) av;
 	if (ac != 1)
 		return (1);
 	while (1)
@@ -47,7 +46,8 @@ int main(int ac, char **av)
 		args[0] = command, free(word), func = get_func(args[0]);
 		if (func == NULL)
 		{
-			perror("Error");
+			errno = ENOENT;
+			perror(av[0]);
 		}
 		else
 			func(args, env);
