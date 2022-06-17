@@ -1,6 +1,5 @@
 #include "main.h"
 
-
 /**
  * _list - lists out the content of the current directory
  * @av: vector of arguments for the operation/command
@@ -15,15 +14,15 @@ void _list(char **av, char **env)
 	pid_t child_id;
 
 	(void) env;
-	command = strdup(av[0]);
-	length1 = strlen("/bin/");
-	length2 = strlen(command);
+	command = _strdup(av[0]);
+	length1 = _strlen("/bin/");
+	length2 = _strlen(command);
 	total_length = length1 + length2 + 1;
 	string = malloc(sizeof(char) * total_length);
 	strcpy(string, "/bin/");
-	strcat(string, command);
+	_strcat(string, command);
 	word = av[0];
-	av[0] = strdup(string);
+	av[0] = _strdup(string);
 	free(word);
 	free(string);
 	free(command);

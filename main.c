@@ -28,17 +28,17 @@ int main(int ac, char **av)
 			{
 				free(line), exit(1);
 			} line[num_char - 1] = '\0';
-		} while (strcmp(line, "\0") == 0);
+		} while (_strcmp(line, "\0") == 0);
 		args = malloc(sizeof(char *) * size);
 		if (args == NULL)
 		{
 			perror("Not enough memory\n");
 			free(line);
 			exit(1);
-		} word = strtok(line, " ");
+		} word = _strtok(line, " ");
 		while (word != NULL)
 		{
-			args[size - 1] = strdup(word);
+			args[size - 1] = _strdup(word);
 			args = realloc(args, sizeof(char *) * (++size));
 			word = strtok(NULL, " ");
 		}

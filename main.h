@@ -45,7 +45,7 @@ void print_env(char **av, char **env);
 size_t _strlen(const char *str);
 char *_strcat(char *str1, const char *str2);
 char *_strdup(const char *str);
-size_t _strcmp(char *str1, const char *str2);
+ssize_t _strcmp(const char *str1, const char *str2);
 size_t _atoi(const char *str);
 char *_strcpy(char *dest, const char *src);
 ssize_t _puts(const char *str);
