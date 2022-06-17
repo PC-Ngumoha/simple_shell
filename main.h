@@ -52,6 +52,8 @@ ssize_t _puts(const char *str);
 char *_strtok(char *string, const char *delim);
 char *strncat(char *dest, const char *src, size_t count);
 
+
+
 /* memory functions */
 void *_realloc(void *old_alloc, size_t old_size, size_t new_size);
 
