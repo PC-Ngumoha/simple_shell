@@ -16,7 +16,7 @@ void (*get_func(char *s))(char **, char **)
 	int i;
 
 	for (i = 0; ops[i].command != NULL; i++)
-		if (strcmp(ops[i].command, s) == 0)
+		if (_strcmp(ops[i].command, s) == 0)
 			return (ops[i].func);
 	return (NULL);
 }
