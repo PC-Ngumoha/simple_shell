@@ -103,3 +103,29 @@ ssize_t _puts(const char *str)
 
 	return (write(1, str, len));
 }
+
+/**
+ * _strncat - appends a number of character of a string to another
+ * @dest: destination string
+ * @src: source string
+ * @count: specified number
+ *
+ * Return: pointer to the appended string
+ */
+char *_strncat(char *dest, const char *src, size_t count)
+{
+	size_t i = 0, j = 0;
+
+	while (dest[i] != '\0')
+		i++;
+
+	while (j < count && src[j] != '\0')
+	{
+		dest[i] = src[j];
+		i++;
+		j++;
+	}
+	dest[i] = '\0';
+
+	return (dest);
+}
