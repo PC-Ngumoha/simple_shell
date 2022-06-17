@@ -29,22 +29,23 @@ void free_args(char **args)
  */
 char *get_command(char *str)
 {
-	size_t size = 1;
+	size_t temp, size = 1;
 	char *string, *command, *token, **args = NULL;
 
 	if (str == NULL)
 		return (NULL);
-	string = strdup(str);
+	string = _strdup(str);
 	args = malloc(sizeof(char *) * size);
-	token = strtok(string, "/");
+	token = _strtok(string, "/");
 	while (token != NULL)
 	{
-		args[size - 1] = strdup(token);
-		args = realloc(args, sizeof(char *) * (++size));
-		token = strtok(NULL, "/");
+		args[size - 1] = _strdup(token);
+		temp = size, size++;
+		args = _realloc(args, sizeof(char *) * temp, sizeof(char *) * size);
+		token = _strtok(NULL, "/");
 	}
 	args[size - 1] = NULL;
-	command = strdup(args[size - 2]);
+	command = _strdup(args[size - 2]);
 	free_args(args);
 	free(string);
 	return (command);
@@ -61,12 +62,12 @@ char *get_command(char *str)
 ssize_t my_getline(char **line, size_t *len, int fd)
 {
 	char buffer[30];
-	size_t n, num = 0;
+	size_t old_len, n, num = 0;
 
 	fflush(stdout);
 	if (line == NULL || len == NULL)
 	{
-		perror("Bad Arguments\n");
+		errno = EINVAL, perror("Error");
 		return (-1);
 	}
 	if (*line == NULL)
@@ -74,7 +75,7 @@ ssize_t my_getline(char **line, size_t *len, int fd)
 		*len = sizeof(buffer), *line = malloc(*len + 1);
 		if (*line == NULL)
 		{
-			perror("Not enough memory\n");
+			errno = ENOMEM, perror("Error");
 			return (-1);
 		}
 	}
@@ -83,10 +84,10 @@ ssize_t my_getline(char **line, size_t *len, int fd)
 	{
 		if (*len - strlen(*line) < sizeof(buffer))
 		{
-			*len *= 2, *line = realloc(*line, *len + 1);
+			old_len = *len, *len *= 2, *line = _realloc(*line, old_len + 1, *len + 1);
 			if (*line == NULL)
 			{
-				perror("Unable to reallocate memory\n");
+				errno = ENOMEM, perror("Error");
 				free(*line);
 				return (-1);
 			}
@@ -96,7 +97,7 @@ ssize_t my_getline(char **line, size_t *len, int fd)
 		if ((*line)[num - 1] == '\n')
 		{
 			(*line)[num] = '\0';
-			return ((ssize_t) strlen(*line));
+			return ((ssize_t) _strlen(*line));
 		}
 	} free(*line), *line = NULL;
 	return (-1);

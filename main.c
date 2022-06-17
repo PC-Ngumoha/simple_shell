@@ -21,7 +21,7 @@ int main(int ac, char **av)
 	while (1)
 	{
 		do {
-			printf("#cisfun$ ");
+			_puts("#cisfun$ ");
 			num_char = my_getline(&line, &n, STDIN_FILENO);
 			if (num_char == -1)
 			{
@@ -31,7 +31,7 @@ int main(int ac, char **av)
 		args = malloc(sizeof(char *) * size);
 		if (args == NULL)
 		{
-			perror("Not enough memory\n");
+			errno = ENOMEM, perror("Error");
 			free(line);
 			exit(1);
 		} word = _strtok(line, " ");
@@ -45,10 +45,7 @@ int main(int ac, char **av)
 		args[size - 1] = NULL, command = get_command(args[0]), word = args[0];
 		args[0] = command, free(word), func = get_func(args[0]);
 		if (func == NULL)
-		{
-			errno = ENOENT;
-			perror(av[0]);
-		}
+			errno = ENOENT, perror(av[0]);
 		else
 			func(args, env);
 		free_args(args), size = 1, args = NULL;
