@@ -37,7 +37,7 @@ int main(int ac, char **av)
 		} word = _strtok(line, " ");
 		while (word != NULL)
 		{
-			args[size - 1] = strdup(word);
+			args[size - 1] = _strdup(word);
 			temp = size, size++;
 			args = _realloc(args, sizeof(char *) * temp, sizeof(char *) * size);
 			word = _strtok(NULL, " ");
