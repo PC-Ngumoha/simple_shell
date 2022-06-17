@@ -22,7 +22,7 @@ size_t _strlen(const char *str)
  * _strcat - function to concatenate
  * @str1: the string to append
  * @str2: string to be joined
- * 
+ *
  * Return: the concatenated string
  */
 char *_strcat(char *str1, const char *str2)
@@ -57,7 +57,7 @@ size_t _strcmp(char *str1, const char *str2)
 	{
 		if (str1[i] != str2[i])
 		{
-			return (str1[i] -str2[i]);
+			return (str1[i] - str2[i]);
 		}
 		i++;
 	}
