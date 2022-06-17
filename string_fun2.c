@@ -56,22 +56,28 @@ char *_strcpy(char *dest, const char *src)
 char *_strtok(char *string, const char *delim)
 {
 	static char *input;
-	char *token;
+	char *token = NULL;
 	size_t i = 0;
 
 	if (string != NULL)
 		input = string;
 	if (input == NULL)
 		return (NULL);
-	while (input[i] == *delim && input[i + 1] != '\0')
+	while (input[i] == *delim && input[i] != '\0')
 		input = &input[i + 1];
-	token = input;
-	while (input[i] != *delim)
+	if (input[i] != '\0')
+		token = input;
+	while (input[i] != *delim && input[i] != '\0')
 		i++;
-	input[i] = '\0';
-	if (input[i + 1] != '\0')
+	if (input[i] != '\0' && input[i + 1] != '\0')
+	{
+		input[i] = '\0';
 		input = &input[i + 1];
+	}
 	else
+	{
+		input[i] = '\0';
 		input = NULL;
+	}
 	return (token);
 }
