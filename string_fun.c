@@ -49,20 +49,17 @@ char *_strcat(char *str1, const char *str2)
  *
  * Return: difference between both string
  */
-size_t _strcmp(char *str1, const char *str2)
+int _strcmp(const char *str1, const char *str2)
 {
-	size_t i = 0;
+	int i = 0;
 
-	while (str1[i] != '\0' && str2[i] != '\0')
-	{
-		if (str1[i] != str2[i])
-		{
-			return (str1[i] - str2[i]);
-		}
+	while ((str1[i] != '\0' && str2[i] != '\0') && (str1[i] == str2[i]))
 		i++;
-	}
 
-	return (0);
+	if (str1[i] == str2[i])
+		return (0);
+	else
+		return (str1[i] - str2[i]);
 }
 
 /**

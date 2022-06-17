@@ -12,7 +12,7 @@
 int main(int ac, char **av)
 {
 	char *word, *command, *line = NULL, **args = NULL, **env = environ;
-	size_t size = 1, n = 0;
+	size_t temp, size = 1, n = 0;
 	ssize_t num_char;
 	void (*func)(char **, char **);
 
@@ -28,19 +28,20 @@ int main(int ac, char **av)
 			{
 				free(line), exit(1);
 			} line[num_char - 1] = '\0';
-		} while (strcmp(line, "\0") == 0);
+		} while (_strcmp(line, "\0") == 0);
 		args = malloc(sizeof(char *) * size);
 		if (args == NULL)
 		{
 			perror("Not enough memory\n");
 			free(line);
 			exit(1);
-		} word = strtok(line, " ");
+		} word = _strtok(line, " ");
 		while (word != NULL)
 		{
 			args[size - 1] = strdup(word);
-			args = realloc(args, sizeof(char *) * (++size));
-			word = strtok(NULL, " ");
+			temp = size, size++;
+			args = _realloc(args, sizeof(char *) * temp, sizeof(char *) * size);
+			word = _strtok(NULL, " ");
 		}
 		args[size - 1] = NULL, command = get_command(args[0]), word = args[0];
 		args[0] = command, free(word), func = get_func(args[0]);
