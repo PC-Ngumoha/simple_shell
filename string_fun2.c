@@ -71,7 +71,9 @@ char *_strtok(char *string, const char *delim)
 	input[i] = '\0';
 	if (input[i + 1] != '\0')
 		input = &input[i + 1];
-	else
-		input = NULL;
+	while (input[i + 1] == '\0')
+	{
+		exit(1);
+	}
 	return (token);
 }
