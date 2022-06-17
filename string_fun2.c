@@ -34,6 +34,7 @@ char *_strdup(const char *str)
 char *_strcpy(char *dest, const char *src)
 {
 	size_t i = 0;
+
 	if (dest == NULL || src == NULL)
 		return (NULL);
 	while (src[i] != '\0')
@@ -41,4 +42,36 @@ char *_strcpy(char *dest, const char *src)
 		dest[i] = src[i];
 		i++;
 	}
-	return (dest);}
+	return (dest);
+}
+
+
+/**
+ * _strtok - cuts a string into tokens based on a specified delimiter
+ * @string: string to be tokenized
+ * @delim: string used as delimiter
+ *
+ * Return: token (Success) or NULL (fail)
+ */
+char *_strtok(char *string, const char *delim)
+{
+	static char *input;
+	char *token;
+	size_t i = 0;
+
+	if (string != NULL)
+		input = string;
+	if (input == NULL)
+		return (NULL);
+	while (input[i] == *delim && input[i + 1] != '\0')
+		input = &input[i + 1];
+	token = input;
+	while (input[i] != *delim)
+		i++;
+	input[i] = '\0';
+	if (input[i + 1] != '\0')
+		input = &input[i + 1];
+	else
+		input = NULL;
+	return (token);
+}
