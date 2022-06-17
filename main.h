@@ -33,7 +33,7 @@ void free_args(char **args);
 char *get_command(char *str);
 ssize_t my_getline(char **line, size_t *len, int fd);
 
-/* Function pointer generator*/s 
+/* Function pointer generator*/ 
 void (*get_func(char *s))(char **, char **);
 
 /* Shell Operations */
@@ -47,7 +47,6 @@ char *_strcat(char *str1, const char *str2);
 char *_strdup(const char *str);
 size_t _strcmp(char *str1, const char *str2);
 size_t _atoi(const char *str);
-size_t _strcmp(char *str1, char *str2);
 char *_strcpy(char *dest, const char *src);
 ssize_t _puts(const char *str);
 char *_strtok(char *string, const char *delim);
