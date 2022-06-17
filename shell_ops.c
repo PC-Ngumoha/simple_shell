@@ -19,7 +19,7 @@ void _list(char **av, char **env)
 	length2 = _strlen(command);
 	total_length = length1 + length2 + 1;
 	string = malloc(sizeof(char) * total_length);
-	strcpy(string, "/bin/");
+	_strcpy(string, "/bin/");
 	_strcat(string, command);
 	word = av[0];
 	av[0] = _strdup(string);
