@@ -29,11 +29,11 @@ void _list(char **av, char **env)
 
 	child_id = fork();
 	if (child_id == -1)
-		dprintf(STDERR_FILENO, "%s: %s\n", av[0], strerror(errno));
+		errno = ECHILD, perror("Error");
 	if (child_id == 0)
 	{
 		if (execve(av[0], av, NULL) == -1)
-			dprintf(STDERR_FILENO, "%s: %s\n", av[0], strerror(errno));
+			errno = EPERM, perror("Error");
 		free_args(av);
 		_exit(1);
 	}
@@ -63,7 +63,7 @@ void my_exit(char **av, char **env)
 	}
 	else
 	{
-		status = atoi(av[1]);
+		status = _atoi(av[1]);
 		free_args(av);
 		exit(status);
 	}
@@ -82,12 +82,13 @@ void print_env(char **av, char **env)
 
 	child_id = fork();
 	if (child_id == -1)
-		dprintf(STDERR_FILENO, "Child process could not be created\n");
+		errno = ECHILD, perror("Error");
 	if (child_id == 0)
 	{
 		while (*env != NULL)
 		{
-			printf("%s\n", *env);
+			_puts(*env);
+			_puts("\n");
 			env++;
 		}
 		free_args(av);

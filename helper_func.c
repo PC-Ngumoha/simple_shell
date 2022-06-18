@@ -92,7 +92,7 @@ ssize_t my_getline(char **line, size_t *len, int fd)
 				return (-1);
 			}
 		}
-		strncat(*line, buffer, n);
+		_strncat(*line, buffer, n);
 		num += n;
 		if ((*line)[num - 1] == '\n')
 		{

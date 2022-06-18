@@ -46,11 +46,11 @@ size_t _strlen(const char *str);
 char *_strcat(char *str1, const char *str2);
 char *_strdup(const char *str);
 int _strcmp(const char *str1, const char *str2);
-size_t _atoi(const char *str);
+int _atoi(const char *str);
 char *_strcpy(char *dest, const char *src);
 ssize_t _puts(const char *str);
 char *_strtok(char *string, const char *delim);
-char *strncat(char *dest, const char *src, size_t count);
+char *_strncat(char *dest, const char *src, size_t count);
 
 
 /* memory functions */

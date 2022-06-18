@@ -37,8 +37,7 @@ int main(int ac, char **av)
 		} word = _strtok(line, " ");
 		while (word != NULL)
 		{
-			args[size - 1] = _strdup(word);
-			temp = size, size++;
+			args[size - 1] = _strdup(word), temp = size, size++;
 			args = _realloc(args, sizeof(char *) * temp, sizeof(char *) * size);
 			word = _strtok(NULL, " ");
 		}
@@ -49,7 +48,6 @@ int main(int ac, char **av)
 		else
 			func(args, env);
 		free_args(args), size = 1, args = NULL;
-
 	}
 	return (0);
 }
