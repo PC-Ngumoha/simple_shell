@@ -33,7 +33,7 @@ void free_args(char **args);
 char *get_command(char *str);
 ssize_t my_getline(char **line, size_t *len, int fd);
 
-/* Function pointer generator*/ 
+/* Function pointer generator*/
 void (*get_func(char *s))(char **, char **);
 
 /* Shell Operations */
@@ -51,6 +51,7 @@ char *_strcpy(char *dest, const char *src);
 ssize_t _puts(const char *str);
 char *_strtok(char *string, const char *delim);
 char *strncat(char *dest, const char *src, size_t count);
+
 
 /* memory functions */
 void *_realloc(void *old_alloc, size_t old_size, size_t new_size);
